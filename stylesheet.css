@@ -20,6 +20,12 @@ a:hover {
   color: #f09228;
 }
 
+a.website-link::after {
+  content: " (欢迎试玩)";
+  font-size: 12px;
+  color: #666;
+}
+
 strong {
   font-weight: 700;
 }
