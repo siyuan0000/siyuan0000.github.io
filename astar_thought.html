@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Siyuan LIU - A*-Thought Blog</title>
+    <meta name="author" content="Siyuan LIU">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="icon" type="image/png" href="images/icon.png">
+
+    <!-- MathJax for rendering math formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .blog-content {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .blog-content h1,
+        .blog-content h2,
+        .blog-content h3 {
+            color: #1772d0;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .blog-content h1 {
+            font-size: 28px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .blog-content h3 {
+            font-size: 20px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+
+        .blog-content p {
+            margin-bottom: 1em;
+        }
+
+        .blog-content ul {
+            margin-bottom: 1em;
+            padding-left: 20px;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5em;
+        }
+
+        .blog-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            font-size: 15px;
+        }
+
+        .blog-content th,
+        .blog-content td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .blog-content th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .blog-content code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .blog-content a {
+            color: #1772d0;
+            text-decoration: none;
+        }
+
+        .blog-content a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #1772d0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .blog-meta {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <strong>Siyuan</strong> LIU
+            </div>
+            <div class="nav-links">
+                <a href="index.html">about</a>
+                <a href="blog.html">blog</a>
+                <a href="hobbies.html">hobbies</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <table
+            style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+                <tr style="padding:0px">
+                    <td style="padding:0px">
+
+                        <!-- Header Section -->
+                        <!-- <table
+                            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                            <tbody>
+                                <tr style="padding:0px">
+                                    <td style="padding:2.5%;width:100%;vertical-align:middle">
+                                        <p class="name" style="text-align: center;">
+                                            Siyuan LIU
+                                        </p>
+                                        <p style="text-align:center; font-size: 18px; margin-bottom: 10px;">
+                                            <a href="index.html">Home</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="blog.html">Blog</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="hobbies.html">Hobbies</a>
+                                        </p>
+                                        <p style="text-align:center">
+                                            <a href="mailto:siyuan00.liu@connect.polyu.hk">Email</a> &nbsp;/&nbsp;
+                                            <a href="data/CV_LIU_Siyuan.pdf" download>CV</a> &nbsp;/&nbsp;
+                                            <a href="https://scholar.google.com/citations?user=wnCrcuwAAAAJ">Scholar</a>
+                                            &nbsp;/&nbsp;
+                                            <a href="https://github.com/siyuan0000">GitHub</a> &nbsp;/&nbsp;
+                                            <a href="https://www.linkedin.com/in/phos04/">LinkedIn</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+                        <!-- <br> -->
+
+                        <!-- Blog Content Section -->
+                        <table
+                            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:16px;width:100%;vertical-align:top;">
+
+                                        <a href="blog.html" class="back-link">&larr; Back to Blog</a>
+
+                                        <div class="blog-content">
+                                            <h1>A*-Thought</h1>
+                                            <div class="blog-meta">February 28, 2026 &nbsp;&middot;&nbsp; 5 min read
+                                            </div>
+
+                                            <h3>Paper Contribution</h3>
+                                            <p>将经典的 A*
+                                                搜索算法引入大模型思维链（CoT）的生成阶段，通过启发式评估动态剪枝冗余步骤，从而在有限的算力资源下，为复杂问题搜索出一条最精简且最准确的推理路径。
+                                            </p>
+
+                                            <div style="text-align: center; margin: 30px 0;">
+                                                <img src="images/astar_thought.png"
+                                                    alt="Chain-of-Thought vs A*-Thought Comparison"
+                                                    style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                            </div>
+
+                                            <h3>Intro: A* Search</h3>
+                                            <p>A* 是一种在状态空间中寻找从起点到终点<strong>最优路径</strong>的经典启发式搜索算法。</p>
+                                            <p>它的核心运作依赖于一个极其优雅的优先级评估公式：$$f(n) = g(n) + h(n)$$</p>
+                                            <p>Intuitively，这个公式在动态权衡“我已经付出了多少代价”与“我预测离终点还有多远”，从而在无数分岔路口中永远挑出最具性价比的下一步。
+                                            </p>
+
+                                            <p><strong>公式参数解析：</strong></p>
+                                            <ul>
+                                                <li><strong>\(n\)</strong>：当前评估的节点</li>
+                                                <li><strong>\(g(n)\)</strong>：<strong>实际代价</strong>。表示从起点走到节点 \(n\)
+                                                    已经实实在在花费的成本。</li>
+                                                <li><strong>\(h(n)\)</strong>：<strong>启发式预估代价</strong>。表示从节点 \(n\)
+                                                    走向最终目标的预测成本。</li>
+                                                <li><strong>\(f(n)\)</strong>：<strong>综合优先级</strong>。节点的总得分，值越小代表该路径越具潜力。
+                                                </li>
+                                            </ul>
+
+                                            <p>这里最核心的是
+                                                \(h(n)\)，就像是你在走迷宫时，凭借直觉对“自己距离出口还有多远”做出的一个<strong>聪明的粗略估算</strong>。它通常不理会眼前复杂的障碍物，而是直接套用简单的几何公式，比如计算当前位置到终点的“直线距离”（欧几里得距离）或“走直角方格的距离”（曼哈顿距离）。\(h(n)\)
+                                                就是算法对未来路程做出的最乐观预测。</p>
+
+                                            <p><strong>具体如何进行搜寻？</strong></p>
+                                            <p>在搜索过程中，算法会时刻维护一个 Priority Queue。每执行一步，它都会优先弹出 \(f(n)\)
+                                                最小（即综合成本最低）的节点进行扩展，计算出所有可能后继节点的 \(g\) 和 \(h\) 值并塞回队列，如此循环往复，直到成功锁定目标。
+                                            </p>
+
+                                            <p><strong>为什么它如此高效？</strong></p>
+                                            <p>它之所以高效，是因为 \(h(n)\)
+                                                的存在赋予了算法“预见未来”的全局视野，彻底避免了传统图搜索盲目铺开所有分支的算力浪费。将其引入大模型推理后，算法能够敏锐地识别并剪枝思维空间中的冗长废话，以极低的成本直达最精简的正确答案。
+                                            </p>
+
+                                            <h3>Core Codes: a_star.py</h3>
+                                            <p>代码要做什么：A*-Thought中，模型的CoT可以处理成树结构。每个节点表示围绕某个句子及其邻居的一小段思考（由’\n\n’分开），整棵树包含了各种可能的思维组合。算法首先通过“双向重要性评分”评估每个句子对问题和答案的重要程度，高分意味着这一步既对理解问题有帮助，也对推理出答案至关重要；双向可以理解为迷宫从入口和出口同时出发。然后，按照这些评分将思维步骤排序，作为
+                                                A* 搜索的候选列表。</p>
+
+                                            <h3><code>class AStar</code></h3>
+                                            <p>代码不长，函数名与参数都是字面意思，很好理解。</p>
+
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th><strong>函数</strong></th>
+                                                        <th><strong>intuitive理解</strong></th>
+                                                        <th><strong>总结</strong></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>__init__(...)</code></td>
+                                                        <td>初始化搜索器参数，保存思维步骤、问题及答案，并根据验证器类型配置标签格式。</td>
+                                                        <td>初始化 A* 搜索框架。</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>extract_boxed_content(text)</code></td>
+                                                        <td>使用正则表达式精准提取文本末尾 <code>\boxed{}</code> 内的最终结果，无则返回
+                                                            <code>None</code>。
+                                                        </td>
+                                                        <td>提取答案框内容。</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>cost(batch)</code></td>
+                                                        <td>为候选路径拼接输入文本，调用验证模型评估当前实际代价 (g) 与启发式预估代价 (h)，返回对应向量。</td>
+                                                        <td>评估候选路径的 g 与 h。</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>get_next_step(batch)</code></td>
+                                                        <td>计算所有候选扩展节点的总成本 (g+h)，并挑选出综合代价最小的路径节点。</td>
+                                                        <td>选择下一步扩展。</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>is_valid_point(current)</code></td>
+                                                        <td>拼接当前的思维文本，并通过验证器判断该路径是否已经能够推导出正确答案。</td>
+                                                        <td>判断当前路径是否有效。</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>search()</code></td>
+                                                        <td>主搜索流程闭环：依次执行初始化、验证、扩展与剪枝，直到找到满意的最简思维路径或触达步数上限。</td>
+                                                        <td>执行 A*-Thought 搜索策略。</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <p><code>search()</code> 的搜索循环运作逻辑由三个核心步骤：</p>
+                                            <ol>
+                                                <li>
+                                                    <strong>Verifying</strong>：<br>
+                                                    算法首先从 <code>open_set</code> 中pop出当前正在维护的路径
+                                                    (<code>current</code>)。这里会检查是否超出了允许的最大搜索步数（可以手动调参），然后通过
+                                                    <code>is_valid_point(current)</code>
+                                                    来判断当前拼接的思维步骤是否已经能够顺畅推导出包含正确答案的结果。如果验证通过，直接返回这条精简后的路径，搜索结束。
+                                                </li>
+                                                <li>
+                                                    <strong>Exploring</strong>：<br>
+                                                    如果尚未到达终点，算法会从按双向重要性排序的候选池 <code>bis_queue</code> 中截取top的一批高分节点（受
+                                                    <code>expand_size</code> 限制）。这里不会只拿单独的一个段落，而是去提取该节点前后的前后段落（例如
+                                                    <code>[item-1, item, item+1]</code>）来保证语义连贯，然后会把这组切片与当前路径进行合并去重（<code>set</code>），生成出多个饱满的候选后续分支。
+                                                </li>
+                                                <li>
+                                                    <strong>Updating & Prune</strong>：<br>
+                                                    接着，算法调用 <code>get_next_step</code>
+                                                    对这批新分支进行打分评估，挑选出综合代价（f=g+h）最低的最佳路径，并将其append到 <code>open_set</code>
+                                                    供下一次循环使用。最后的prune是会检查新加入节点的相邻步骤是否已经添加到了当前路径中。如果相邻步骤已被包含，代码会直接把它们从候选池
+                                                    <code>bis_queue</code> 中剔除，防止后续再次加入。
+                                                </li>
+                                            </ol>
+
+                                            <hr>
+                                            <p>具体可以查看论文: <a href="https://arxiv.org/html/2505.24550v1"
+                                                    target="_blank">https://arxiv.org/html/2505.24550v1</a></p>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <br>
+
+                        <!-- Footnote -->
+                        <div class="footnote">
+                            Website design from <a href="https://github.com/jonbarron/website">Jon Barron</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
