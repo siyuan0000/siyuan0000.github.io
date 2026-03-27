@@ -183,4 +183,18 @@ img.hoverZoomLink:hover {
     margin: 0 auto;
     display: block;
   }
+  
+  /* Hobbies page responsive adjustments */
+  .hobbies-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .hobby-card {
+    padding: 20px !important;
+  }
+  
+  .avalon-iframe {
+    height: 600px !important;
+  }
 }
